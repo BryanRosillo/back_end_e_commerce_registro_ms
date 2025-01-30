@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservicio-registro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservicio-registro
+  template:
+    metadata:
+      labels:
+        app: microservicio-registro
+    spec:
+      containers:
+      - name: microservicio-registro
+        image: bryanlrx/ec-re-mi:latest
+        ports:
+        - containerPort: 8761
