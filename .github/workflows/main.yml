@@ -29,6 +29,10 @@ jobs:
     - name: Config kubectl
       run: gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONA --project ${{ secrets.GCP_PROYECTO_ID}}
 
+    - name: setup-gke-gcloud-auth-plugin
+      uses: simenandre/setup-gke-gcloud-auth-plugin@v1.1.3
+          
+
     - name: Docker Login
       uses: docker/login-action@v3.3.0
       with:
@@ -44,4 +48,4 @@ jobs:
       run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/$IMAGEN_DOCKER:latest
 
     - name: Update Kubernetes deployment
-      run: kubectl apply -f k8s/deployment.yaml --validate=false
+      run: kubectl apply -f k8s/deployment.yaml
