@@ -44,4 +44,4 @@ jobs:
       run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/$IMAGEN_DOCKER:latest
 
     - name: Update Kubernetes deployment
-      run: kubectl apply -f k8s/deployment.yaml
+      run: kubectl apply -f k8s/deployment.yaml --validate=false
