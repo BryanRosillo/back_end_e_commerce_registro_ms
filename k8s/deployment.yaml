@@ -15,5 +15,6 @@ spec:
       containers:
       - name: microservicio-registro
         image: bryanlrx/ec-re-mi:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8761
